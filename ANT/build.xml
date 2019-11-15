@@ -1,0 +1,39 @@
+<project name="ProjetArcanor">
+
+	<description>
+        Fichier XML des testsx Arcanor
+    </description>
+	
+	<!-- set global properties for this build -->
+    <property name="src" location="../src/"/>
+    <property name="build" location="./build/"/>
+		<property name="classes" location="./build/classes/"/>
+    <!-- <property name="dist" location="./dist/"/> -->
+    <property name="jar" location="./jar/"/>
+
+	
+    <target name="clean">
+        <delete dir="${build}"/>
+        <delete dir="${jar}"/>
+    </target>
+	
+    <target name="compile">
+        <mkdir dir="${classes}"/>
+        <javac srcdir="${src}" destdir="${classes}"/>
+    </target>
+	
+    <target name="jar">
+        <mkdir dir="${jar}"/>
+        <jar destfile="${jar}/Arcanor.jar" basedir="${classes}">
+            <manifest>
+                <attribute name="Main-Class" value="Arcanor.jar"/>
+            </manifest>
+        </jar>
+    </target>
+	
+    <target name="run">
+        <java jar="${jar}/Arcanor.jar" fork="true"/>
+    </target>	
+
+
+</project>
